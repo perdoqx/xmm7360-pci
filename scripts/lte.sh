@@ -66,4 +66,7 @@ if [[ "$1" = "up" ]]; then
 
   python3 $SCRIPT_DIR/../rpc/open_xdatachannel.py
   ip link set wwan0 up
+
+# Add the nameservers 1.1.1.1 & 8.8.8.8 to the /etc/resolv.conf
+  echo -e "nameserver 1.1.1.1\nnameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf
 fi
