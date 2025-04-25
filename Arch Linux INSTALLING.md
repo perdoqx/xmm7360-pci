@@ -15,13 +15,21 @@ If the output contains a line with `8086:7360`, your device is present.
 Install Python and necessary dependencies:
 
 ```sh
-$ sudo pacman -S python pip python-configargparse python-pyroute2 python-dbus
+$ sudo pacman -S python python-configargparse python-pyroute2 python-dbus
+```
+
+```sh
+$ sudo pacman -S python pip
 ```
 
 Update and install Linux headers:
 
 ```sh
 $ sudo pacman -Syu linux-headers
+```
+or
+```sh
+$ sudo pacman -Syu linux-lts-headers
 ```
 
 Reboot the system:
