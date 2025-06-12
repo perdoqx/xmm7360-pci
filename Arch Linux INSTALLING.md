@@ -19,7 +19,7 @@ $ sudo pacman -S python python-configargparse python-pyroute2 python-dbus
 ```
 
 ```sh
-$ sudo pacman -S python pip
+$ sudo pacman -S python-pip
 ```
 
 Update and install Linux headers:
