@@ -157,7 +157,7 @@ RemainAfterExit=true
 WantedBy=multi-user.target
 ```
 
-    📝 Replace YOUR_USERNAME with your actual user name.
+Replace YOUR_USERNAME with your actual user name.
 
 Then run:
 ```sh
