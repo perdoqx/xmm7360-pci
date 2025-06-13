@@ -135,4 +135,51 @@ This script automates the configuration and connection process, making it easier
 
 ---
 
+## 8. Automating on Boot (via systemd)
+
+Create a service file:
+```sh
+sudo nano /etc/systemd/system/lte.service
+```
+
+Paste the following (replace YOUR_USERNAME):
+```sh
+[Unit]
+Description=Intel XMM7360 LTE Modem Connection
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/YOUR_USERNAME/xmm7360-pci
+ExecStart=/home/YOUR_USERNAME/xmm7360-pci/scripts/lte.sh setup
+ExecStartPost=/usr/local/bin/lte up
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+```
+    📝 Replace YOUR_USERNAME with your actual user name.
+
+Then run:
+```sh
+sudo systemctl daemon-reload
+```
+```sh
+sudo systemctl enable lte.service
+```
+```sh
+sudo systemctl start lte.service
+```
+
+Now your modem will automatically initialize and connect at boot!
+🧪 Testing
+
+After reboot, run:
+```sh
+ip addr show wwan0
+```
+```sh
+ping -c 3 1.1.1.1
+```
+
 Your xmm7360 PCI modem should now be fully functional on Arch Linux! 🚀
