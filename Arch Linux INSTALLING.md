@@ -5,7 +5,7 @@
 Run the following command to check if your modem is detected:
 
 ```sh
-$ lspci -nn | grep 8086:7360
+lspci -nn | grep 8086:7360
 ```
 
 If the output contains a line with `8086:7360`, your device is present.
@@ -15,27 +15,27 @@ If the output contains a line with `8086:7360`, your device is present.
 Install Python and necessary dependencies:
 
 ```sh
-$ sudo pacman -S python python-configargparse python-pyroute2 python-dbus
+sudo pacman -S python python-configargparse python-pyroute2 python-dbus
 ```
 
 ```sh
-$ sudo pacman -S python-pip
+sudo pacman -S python-pip
 ```
 
 Update and install Linux headers:
 
 ```sh
-$ sudo pacman -Syu linux-headers
+sudo pacman -Syu linux-headers
 ```
 or
 ```sh
-$ sudo pacman -Syu linux-lts-headers
+sudo pacman -Syu linux-lts-headers
 ```
 
 Reboot the system:
 
 ```sh
-$ sudo reboot
+sudo reboot
 ```
 
 ## 3. Verifying Kernel Headers
@@ -43,7 +43,7 @@ $ sudo reboot
 After rebooting, verify that the kernel headers are correctly installed:
 
 ```sh
-$ ls -l /lib/modules/$(uname -r)/build
+ls -l /lib/modules/$(uname -r)/build
 ```
 
 If the directory exists, you can proceed.
@@ -53,13 +53,13 @@ If the directory exists, you can proceed.
 Clone the repository:
 
 ```sh
-$ git clone https://github.com/perdoqx/xmm7360-pci.git
+git clone https://github.com/perdoqx/xmm7360-pci.git
 ```
 
 Navigate to the repository:
 
 ```sh
-$ cd xmm7360-pci
+cd xmm7360-pci
 ```
 
 ## 5. Compiling and Loading the Driver
@@ -67,7 +67,7 @@ $ cd xmm7360-pci
 Compile and load the driver:
 
 ```sh
-$ make && sudo make load
+make && sudo make load
 ```
 
 ## 6. Configuring the Modem
@@ -75,7 +75,7 @@ $ make && sudo make load
 Copy the sample configuration file:
 
 ```sh
-$ cp xmm7360.ini.sample xmm7360.ini
+cp xmm7360.ini.sample xmm7360.ini
 ```
 
 Modify the `apn` parameter in `xmm7360.ini` (example for Beeline Russia):
@@ -89,23 +89,23 @@ apn=internet.beeline.ru
 Run the following command to establish a connection (replace `apn.url` with your actual APN):
 
 ```sh
-$ sudo python3 rpc/open_xdatachannel.py --apn apn.url
+sudo python3 rpc/open_xdatachannel.py --apn apn.url
 ```
 
 Set up a DNS server:
 
 ```sh
-# echo "nameserver 1.1.1.1" >> /etc/resolv.conf
+echo "nameserver 1.1.1.1" >> /etc/resolv.conf
 ```
 or
 ```sh
-$ echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf
+echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf
 ```
 
 Enable the network interface:
 
 ```sh
-$ sudo ip link set wwan0 up
+sudo ip link set wwan0 up
 ```
 
 ## 7. Automatic Setup (Recommended)
@@ -115,20 +115,20 @@ To simplify the modem setup, use the provided script:
 After copy the sample configuration file:
 
 ```sh
-$ cp xmm7360.ini.sample xmm7360.ini
+cp xmm7360.ini.sample xmm7360.ini
 ```
 
 Run the following command to install and set up the modem:
 
 ```sh
-$ sudo ./scripts/lte.sh setup
+sudo ./scripts/lte.sh setup
 
 ```
 ### Usage
 Once installed, use the following command to bring up the LTE connection:
 
 ```sh
-$ sudo lte up
+sudo lte up
 ```
 
 This script automates the configuration and connection process, making it easier to manage the modem.
