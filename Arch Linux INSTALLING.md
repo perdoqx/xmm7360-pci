@@ -29,7 +29,7 @@ sudo pacman -Syu linux-headers
 ```
 or
 ```sh
-sudo pacman -Syu linux-lts-headers
+sudo pacman -S linux-lts linux-lts-headers
 ```
 
 Reboot the system:
