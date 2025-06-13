@@ -122,8 +122,8 @@ Run the following command to install and set up the modem:
 
 ```sh
 sudo ./scripts/lte.sh setup
-
 ```
+
 ### Usage
 Once installed, use the following command to bring up the LTE connection:
 
@@ -132,8 +132,6 @@ sudo lte up
 ```
 
 This script automates the configuration and connection process, making it easier to manage the modem.
-
----
 
 ## 8. Automating on Boot (via systemd)
 
@@ -158,6 +156,7 @@ RemainAfterExit=true
 [Install]
 WantedBy=multi-user.target
 ```
+
     📝 Replace YOUR_USERNAME with your actual user name.
 
 Then run:
@@ -181,5 +180,5 @@ ip addr show wwan0
 ```sh
 ping -c 3 1.1.1.1
 ```
-
+---
 Your xmm7360 PCI modem should now be fully functional on Arch Linux! 🚀
