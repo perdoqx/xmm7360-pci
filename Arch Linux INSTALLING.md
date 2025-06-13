@@ -15,7 +15,7 @@ If the output contains a line with `8086:7360`, your device is present.
 Install Python and necessary dependencies:
 
 ```sh
-sudo pacman -S python python-configargparse python-pyroute2 python-dbus
+sudo pacman -S --needed base-devel git dkms python python-configargparse python-pyroute2 python-dbus
 ```
 
 ```sh
